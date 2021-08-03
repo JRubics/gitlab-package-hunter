@@ -10,5 +10,5 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
+    - run: ${{ github.action_path }}/setup.sh
       shell: bash
