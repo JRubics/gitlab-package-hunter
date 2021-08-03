@@ -55,18 +55,18 @@ openssl x509 -passin pass:1234 -req -days 365 -in client.csr -CA ca.crt -CAkey c
 ## Remove passphrase from Client Key.
 openssl rsa -passin pass:1234 -in client.key -out client.key
 ## Move files to correct location.
-mkdir /etc/falco/certs
-mv server.key /etc/falco/certs/
-mv server.crt /etc/falco/certs/
-mv ca.crt /etc/falco/certs/
-mv client.key /etc/falco/certs/
-mv client.crt /etc/falco/certs/
-mv client.csr /etc/falco/certs/
+sudo mkdir /etc/falco/certs
+sudo mv server.key /etc/falco/certs/
+sudo mv server.crt /etc/falco/certs/
+sudo mv ca.crt /etc/falco/certs/
+sudo mv client.key /etc/falco/certs/
+sudo mv client.crt /etc/falco/certs/
+sudo mv client.csr /etc/falco/certs/
 ## Make files world-readable.
-chmod +r /etc/falco/certs/*
+sudo chmod +r /etc/falco/certs/*
 
 # Move Falco configuration file to correct location.
-cp /vagrant/falco/falco.yaml /etc/falco/
+sudo cp /vagrant/falco/falco.yaml /etc/falco/
 
 # Install Falco driver
 falco-driver-loader
