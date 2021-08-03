@@ -19,7 +19,7 @@
 # cp ~/server.crt ~/client.crt ~/client.key .
 
 # DEBUG=pkgs* node src/server.js
-
+sudo su
 apt-get update -y
     # Install base packages.
     apt-get -y install dkms build-essential linux-headers-$(uname -r) apt-transport-https ca-certificates curl gnupg lsb-release
