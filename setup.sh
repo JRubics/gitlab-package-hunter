@@ -49,7 +49,9 @@ npm ci
 # during the configuration of Falco's gRPC API in this directory
 # cp server.crt client.crt client.key .
 
-DEBUG=pkgs* node src/server.js
+DEBUG=pkgs* nohup node src/server.js &
+
+curl http://localhost:3000
 
 # Install Falco driver
 # falco-driver-loader
