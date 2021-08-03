@@ -10,11 +10,6 @@ echo "deb https://download.falco.org/packages/deb stable main" | sudo tee -a /et
 sudo apt-get -y update
 sudo apt-get -y install falco=0.23.0
 
-# Install Node v12.
-wget https://nodejs.org/download/release/v12.22.0/node-v12.22.0-linux-x64.tar.gz
-tar -C /usr/local --strip-components 1 -xzf node-v12.22.0-linux-x64.tar.gz
-rm node-v12.22.0-linux-x64.tar.gz
-
 # Generate certificates for Falco.
 ## Create a RANDFILE for the root user.
 openssl rand -writerand /root/.rnd
