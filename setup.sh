@@ -50,7 +50,7 @@ npm ci
 # cp server.crt client.crt client.key .
 
 DEBUG=pkgs* nohup node src/server.js &
-
+sleep 10
 curl http://localhost:3000
 
 # Install Falco driver
