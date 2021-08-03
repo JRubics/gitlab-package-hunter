@@ -2,7 +2,7 @@ whoami
 
 # Trust the falcosecurity GPG key, configure the apt repository, and update the package list
 curl -s https://falco.org/repo/falcosecurity-3672BA8F.asc | apt-key add -
-echo "deb https://download.falco.org/packages/deb stable main" | tee -a /etc/apt/sources.list.d/falcosecurity.list
+sudo echo "deb https://download.falco.org/packages/deb stable main" | tee -a /etc/apt/sources.list.d/falcosecurity.list
 sudo apt-get update -y
 
 # Install kernel headers
