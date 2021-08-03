@@ -55,21 +55,27 @@ openssl x509 -passin pass:1234 -req -days 365 -in client.csr -CA ca.crt -CAkey c
 ## Remove passphrase from Client Key.
 openssl rsa -passin pass:1234 -in client.key -out client.key
 ## Move files to correct location.
-sudo mkdir /etc/falco/certs
-sudo mv server.key /etc/falco/certs/
-sudo mv server.crt /etc/falco/certs/
-sudo mv ca.crt /etc/falco/certs/
-sudo mv client.key /etc/falco/certs/
-sudo mv client.crt /etc/falco/certs/
-sudo mv client.csr /etc/falco/certs/
-## Make files world-readable.
-sudo chmod +r /etc/falco/certs/*
+# sudo mkdir /etc/falco/certs
+# sudo mv server.key /etc/falco/certs/
+# sudo mv server.crt /etc/falco/certs/
+# sudo mv ca.crt /etc/falco/certs/
+# sudo mv client.key /etc/falco/certs/
+# sudo mv client.crt /etc/falco/certs/
+# sudo mv client.csr /etc/falco/certs/
+# ## Make files world-readable.
+# sudo chmod +r /etc/falco/certs/*
 
-# Move Falco configuration file to correct location.
-sudo cp /vagrant/falco/falco.yaml /etc/falco/
+git clone https://gitlab.com/gitlab-org/security-products/package-hunter.git
+
+cd package-hunter
+cp falco/falco_rules.local.yaml /etc/falco/ && service falco restart
+npm ci
+
+// copy files server.crt, client.crt, and client.key that have been created
+// during the configuration of Falco's gRPC API in this directory
+cp ~/server.crt ~/client.crt ~/client.key .
+
+DEBUG=pkgs* node src/server.js
 
 # Install Falco driver
-falco-driver-loader
-
-# Start Falco
-service falco start
+# falco-driver-loader
