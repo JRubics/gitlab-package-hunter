@@ -1,15 +1,15 @@
 # Trust the falcosecurity GPG key, configure the apt repository, and update the package list
-sudo curl -s https://falco.org/repo/falcosecurity-3672BA8F.asc | apt-key add -
-sudo echo "deb https://download.falco.org/packages/deb stable main" | tee -a /etc/apt/sources.list.d/falcosecurity.list
-sudo apt-get update -y
+sudo curl -s https://falco.org/repo/falcosecurity-3672BA8F.asc | sudo apt-key add -
+sudo echo "deb https://download.falco.org/packages/deb stable main" | sudo tee -a /etc/apt/sources.list.d/falcosecurity.list
+# sudo apt-get update -y
 
-# Install kernel headers
-sudo apt-get -y install linux-headers-$(uname -r)
+# # Install kernel headers
+# sudo apt-get -y install linux-headers-$(uname -r)
 
-# Install Falco
-sudo apt-get -y install falco=0.23.0
+# # Install Falco
+# sudo apt-get -y install falco=0.23.0
 
-falco -v
+# falco -v
 # git clone https://gitlab.com/gitlab-org/security-products/package-hunter.git
 # cd package-hunter
 # cp falco/falco_rules.local.yaml /etc/falco/ && service falco restart
