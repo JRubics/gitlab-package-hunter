@@ -42,7 +42,7 @@ sudo chmod +r /etc/falco/certs/*
 git clone https://gitlab.com/gitlab-org/security-products/package-hunter.git
 
 cd package-hunter
-cp falco/falco_rules.local.yaml /etc/falco/ && service falco restart
+sudo cp falco/falco_rules.local.yaml /etc/falco/ && service falco restart
 npm ci
 
 # copy files server.crt, client.crt, and client.key that have been created
