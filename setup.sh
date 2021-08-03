@@ -1,25 +1,3 @@
-node -v
-# # Trust the falcosecurity GPG key, configure the apt repository, and update the package list
-# curl -s https://falco.org/repo/falcosecurity-3672BA8F.asc | sudo apt-key add -
-# echo "deb https://download.falco.org/packages/deb stable main" | sudo tee -a /etc/apt/sources.list.d/falcosecurity.list
-# sudo apt-get update -y
-
-# # Install kernel headers
-# sudo apt-get -y install linux-headers-$(uname -r)
-
-# # Install Falco
-# sudo apt-get -y install falco=0.23.0
-
-# git clone https://gitlab.com/gitlab-org/security-products/package-hunter.git
-# cd package-hunter
-# cp falco/falco_rules.local.yaml /etc/falco/ && service falco restart
-# npm ci
-
-# // copy files server.crt, client.crt, and client.key that have been created
-# // during the configuration of Falco's gRPC API in this directory
-# cp ~/server.crt ~/client.crt ~/client.key .
-
-# DEBUG=pkgs* node src/server.js
 sudo apt-get update -y
 # Install base packages.
 sudo apt-get -y install dkms build-essential linux-headers-$(uname -r) apt-transport-https ca-certificates gnupg lsb-release
@@ -56,15 +34,15 @@ openssl x509 -passin pass:1234 -req -days 365 -in client.csr -CA ca.crt -CAkey c
 ## Remove passphrase from Client Key.
 openssl rsa -passin pass:1234 -in client.key -out client.key
 ## Move files to correct location.
-# sudo mkdir /etc/falco/certs
-# sudo mv server.key /etc/falco/certs/
-# sudo mv server.crt /etc/falco/certs/
-# sudo mv ca.crt /etc/falco/certs/
-# sudo mv client.key /etc/falco/certs/
-# sudo mv client.crt /etc/falco/certs/
-# sudo mv client.csr /etc/falco/certs/
-# ## Make files world-readable.
-# sudo chmod +r /etc/falco/certs/*
+sudo mkdir /etc/falco/certs
+sudo mv server.key /etc/falco/certs/
+sudo mv server.crt /etc/falco/certs/
+sudo mv ca.crt /etc/falco/certs/
+sudo mv client.key /etc/falco/certs/
+sudo mv client.crt /etc/falco/certs/
+sudo mv client.csr /etc/falco/certs/
+## Make files world-readable.
+sudo chmod +r /etc/falco/certs/*
 
 git clone https://gitlab.com/gitlab-org/security-products/package-hunter.git
 
@@ -74,7 +52,7 @@ npm ci
 
 # copy files server.crt, client.crt, and client.key that have been created
 # during the configuration of Falco's gRPC API in this directory
-cp ~/server.crt ~/client.crt ~/client.key .
+# cp server.crt client.crt client.key .
 
 DEBUG=pkgs* node src/server.js
 
