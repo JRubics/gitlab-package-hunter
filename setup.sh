@@ -51,7 +51,14 @@ npm ci
 
 DEBUG=pkgs* nohup node src/server.js &
 sleep 10
-curl http://localhost:3000
+
+git clone https://github.com/react-boilerplate/react-boilerplate.git
+tar czvf gitlab.tgz react-boilerplate
+docker run --rm \
+  -v "${PWD}:/usr/src/app" \
+  --env "DEBUG=pkgs*" \
+  --env "HTR_user=someuser" --env "HTR_pass=somepass" \
+  registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli analyze gitlab.tgz
 
 # Install Falco driver
 # falco-driver-loader
